@@ -53,7 +53,7 @@ jobs:
       run: |
         curl -LJO https://unified-agent.s3.amazonaws.com/wss-unified-agent.jar
         echo Unified Agent downloaded successfully
-        WARFILE=$(find ./build/libs -type f -wholename "*.war")
+        JARFILE=$(find ./build/libs -type f -wholename "*.jar" ! -wholename "*javadoc*" ! -wholename "*groovydoc*" ! -wholename "*sources*")
         echo $WARFILE will be added to appPath
-        java -jar wss-unified-agent.jar -appPath $WARFILE -d ./
+        java -jar wss-unified-agent.jar -appPath $JARFILE -d ./
         
